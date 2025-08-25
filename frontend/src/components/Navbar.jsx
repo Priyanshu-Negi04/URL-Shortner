@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 const Navbar = () => (
-  <nav className="bg-gray-900 p-4 shadow-md">
+  <nav className="bg-gray-900 p-4 shadow-md items-center" style={{height: "6rem", display: "flex"}}>
     <div className="container mx-auto flex justify-between items-center">
       <Link to="/" className="text-white text-lg font-semibold hover:text-blue-400">
         URL Shortener
