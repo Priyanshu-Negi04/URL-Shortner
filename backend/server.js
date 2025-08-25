@@ -4,8 +4,10 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const urlRoutes = require('./routes/urlRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 
 const app = express();
+
 
 // Global Middleware BEFORE routes
 app.use(cors());
@@ -13,6 +15,7 @@ app.use(express.json());
 
 // Register API routes
 app.use('/api', urlRoutes);
+app.use('/api/admin', adminRoutes);
 
 // Test root route
 app.get('/', (req, res) => {

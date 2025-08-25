@@ -74,3 +74,19 @@ exports.redirectUrl = async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 };
+
+
+// backend/controllers/urlController.js
+
+exports.getAllUrls = async (req, res) => {
+  try {
+    // Find all URL documents, sorted by newest first
+    const urls = await Url.find().sort({ createdAt: -1 });
+
+    // Send URLs as JSON response
+    res.json(urls);
+  } catch (err) {
+    console.error('Error fetching URLs:', err);
+    res.status(500).json({ error: 'Server error fetching URLs' });
+  }
+};
