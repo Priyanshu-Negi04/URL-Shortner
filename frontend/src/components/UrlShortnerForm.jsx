@@ -1,28 +1,24 @@
-
 import { useState } from "react";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-
 export default function UrlShortnerForm() {
   const [longUrl, setLongUrl] = useState("");
-  const [shortUrl, setShortUrl] = useState("");
-
-
-  const [error, setError] = useState("");  
+  const [shortUrl, setShortUrl] = useState("");  // Holds full URL returned by backend
+  const [error, setError] = useState("");
   const [copied, setCopied] = useState(false);
 
-    const handleCopy = () => {
-        if (shortCode) {
-            navigator.clipboard.writeText(shortUrl);  
-            setCopied(true);
-            setTimeout(() => setCopied(false), 2000);
-        }
-    };
+  const handleCopy = () => {
+    if (shortUrl) {
+      navigator.clipboard.writeText(shortUrl);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setShortCode("");
+    setShortUrl("");
     setError("");
 
     try {
@@ -32,13 +28,12 @@ export default function UrlShortnerForm() {
         body: JSON.stringify({ originalUrl: longUrl }),
       });
       const data = await res.json();
-      
+
       if (res.ok) {
-        setShortUrl(data.shortUrl);  
+        setShortUrl(data.shortUrl);  // Use full shortened URL here
       } else {
         setError(data.error || "Something went wrong");
       }
-
     } catch {
       setError("Server unreachable");
     }
@@ -48,7 +43,7 @@ export default function UrlShortnerForm() {
     <div className="min-h-screen flex items-center justify-center">
       <div className="bg-white rounded-[2.5rem] shadow-xl p-14 max-w-lg w-full relative formContainer">
         <h1 className="text-5xl font-extrabold text-purple-700 text-center mb-3 tracking-wide drop-shadow">
-          URL Shortner
+          URL Shortener
         </h1>
         <div className="font-semibold italic text-green-600 text-center mb-10 text-xl">
           Your links, simplified
@@ -72,7 +67,7 @@ export default function UrlShortnerForm() {
         </form>
 
         {/* Show shortened URL or error after submission */}
-        {(shortCode || error) && (
+        {(shortUrl || error) && (
           <div className="mt-12 text-center">
             {error ? (
               <div className="text-red-600 border border-red-400 p-4 rounded-md font-semibold text-lg max-w-md mx-auto">
@@ -87,25 +82,24 @@ export default function UrlShortnerForm() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-grow px-6 py-4 bg-gray-200 rounded-md text-xl font-mono underline text-blue-700"
-                    title={`http://localhost:5000/api/${shortCode}`}
+                    title={shortUrl}
                   >
                     {shortUrl}
                   </a>
-                    <div className="relative">
-                        <button
-                            onClick={handleCopy}
-                            className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-full font-semibold transition"
-                            aria-label="Copy shortened URL"
-                        >
-                            Copy
-                        </button>
-                        {copied && (
-                            <span className="absolute text-green-600 font-semibold" style={{ left: '25px', top: '50px', fontSize: '20px' }}>
-                            Copied!
-                            </span>
-                        )}
-                    </div>
-
+                  <div className="relative">
+                    <button
+                      onClick={handleCopy}
+                      className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-full font-semibold transition"
+                      aria-label="Copy shortened URL"
+                    >
+                      Copy
+                    </button>
+                    {copied && (
+                      <span className="absolute text-green-600 font-semibold" style={{ left: "25px", top: "50px", fontSize: "20px" }}>
+                        Copied!
+                      </span>
+                    )}
+                  </div>
                 </div>
               </>
             )}
