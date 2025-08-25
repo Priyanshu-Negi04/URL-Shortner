@@ -1,5 +1,6 @@
 const Url = require('../models/Url');
 const crypto = require('crypto');
+require('dotenv').config();  // Load env vars from .env file
 
 // Helper function to generate a random alphanumeric short code
 function generateShortCode(length = 6) {
@@ -21,7 +22,11 @@ exports.shortenUrl = async (req, res) => {
     // Check if originalUrl already exists in DB
     let url = await Url.findOne({ originalUrl });
     if (url) {
-      return res.json({ shortCode: url.shortCode });
+      const baseUrl = process.env.BASE_URL || 'http://localhost:5000';
+      return res.json({ 
+        shortCode: url.shortCode,
+        shortUrl: `${baseUrl}/api/${url.shortCode}`
+      });
     }
 
     // Generate a unique shortCode
@@ -36,7 +41,12 @@ exports.shortenUrl = async (req, res) => {
     url = new Url({ originalUrl, shortCode });
     await url.save();
 
-    res.json({ shortCode });
+    const baseUrl = process.env.BASE_URL || 'http://localhost:5000';
+
+    res.json({ 
+      shortCode,
+      shortUrl: `${baseUrl}/api/${shortCode}`
+    });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Server error' });
