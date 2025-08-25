@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 
-const BACKEND_URL = "http://localhost:5000/api/shorten";
+const BACKEND_URL = "https://url-shortner-backend-c46p.onrender.com/api/shorten";
 
 export default function UrlShortnerForm() {
   const [longUrl, setLongUrl] = useState("");
