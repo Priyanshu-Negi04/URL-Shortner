@@ -40,7 +40,7 @@ export default function UrlShortnerForm() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="flex items-center justify-center">
       <div className="bg-white rounded-[2.5rem] shadow-xl p-14 max-w-lg w-full relative formContainer">
         <h1 className="text-5xl font-extrabold text-purple-700 text-center mb-3 tracking-wide drop-shadow">
           URL Shortener
