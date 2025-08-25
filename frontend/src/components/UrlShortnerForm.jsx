@@ -6,13 +6,15 @@ const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export default function UrlShortnerForm() {
   const [longUrl, setLongUrl] = useState("");
-  const [shortCode, setShortCode] = useState("");
+  const [shortUrl, setShortUrl] = useState("");
+
+
   const [error, setError] = useState("");  
   const [copied, setCopied] = useState(false);
 
     const handleCopy = () => {
         if (shortCode) {
-            navigator.clipboard.writeText(`http://localhost:5000/api/${shortCode}`);
+            navigator.clipboard.writeText(shortUrl);  
             setCopied(true);
             setTimeout(() => setCopied(false), 2000);
         }
@@ -30,12 +32,13 @@ export default function UrlShortnerForm() {
         body: JSON.stringify({ originalUrl: longUrl }),
       });
       const data = await res.json();
-
+      
       if (res.ok) {
-        setShortCode(data.shortCode);
+        setShortUrl(data.shortUrl);  
       } else {
         setError(data.error || "Something went wrong");
       }
+
     } catch {
       setError("Server unreachable");
     }
@@ -80,13 +83,13 @@ export default function UrlShortnerForm() {
                 <span className="text-3xl font-semibold mb-3 block">Your shortened URL :</span>
                 <div className="flex justify-center items-center gap-3 mt-2 max-w-md mx-auto">
                   <a
-                    href={`http://localhost:5000/api/${shortCode}`}
+                    href={shortUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-grow px-6 py-4 bg-gray-200 rounded-md text-xl font-mono underline text-blue-700"
                     title={`http://localhost:5000/api/${shortCode}`}
                   >
-                    {`localhost:5000/api/${shortCode}`}
+                    {shortUrl}
                   </a>
                     <div className="relative">
                         <button
