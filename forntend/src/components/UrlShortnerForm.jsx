@@ -1,7 +1,8 @@
 
 import { useState } from "react";
 
-const BACKEND_URL = "https://url-shortner-backend-c46p.onrender.com/api/shorten";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 
 export default function UrlShortnerForm() {
   const [longUrl, setLongUrl] = useState("");
