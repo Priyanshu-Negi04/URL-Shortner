@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import React, { Routes, Route } from 'react-router-dom';
 import UrlShortnerForm from './components/UrlShortnerForm';
 import AdminPage from './components/AdminPage'; // Adjust the path if needed
 
