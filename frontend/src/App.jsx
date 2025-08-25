@@ -1,13 +1,17 @@
 import React, { Routes, Route } from 'react-router-dom';
 import UrlShortnerForm from './components/UrlShortnerForm';
-import AdminPage from './components/AdminPage'; // Adjust the path if needed
+import AdminPage from './components/AdminPage';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<UrlShortnerForm />} />
-      <Route path="/admin" element={<AdminPage />} />
-    </Routes>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<UrlShortnerForm />} />
+        <Route path="/admin" element={<AdminPage />} />
+      </Routes>
+    </>
   );
 }
 
