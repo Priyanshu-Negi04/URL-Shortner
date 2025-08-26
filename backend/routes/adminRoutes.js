@@ -1,21 +1,8 @@
-// const express = require('express');
-// const router = express.Router();
-// const basicAuth = require('../middleware/basicAuth');
-// const urlController = require('../controllers/urlController');
-
-// router.use(basicAuth);  
-
-// router.get('/urls', urlController.getAllUrls);
-
-// module.exports = router;
-
-
 const express = require('express');
 const router = express.Router();
 const basicAuth = require('../middleware/basicAuth');
 const urlController = require('../controllers/urlController');
 
-// NEW: Login endpoint (no basicAuth middleware)
 router.post('/login', (req, res) => {
   const { username, password } = req.body;
   
@@ -35,8 +22,8 @@ router.post('/login', (req, res) => {
   }
 });
 
-// Existing protected route (keep this as is)
-router.use(basicAuth);  // Protect all routes below this line
+
+router.use(basicAuth);  
 router.get('/urls', urlController.getAllUrls);
 
 module.exports = router;

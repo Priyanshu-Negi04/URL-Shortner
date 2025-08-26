@@ -18,7 +18,6 @@ const AdminLogin = () => {
     if (!result.success) {
       setError(result.message || 'Login failed');
     }
-    // If successful, ProtectedRoute will automatically show AdminPage
     
     setLoading(false);
   };

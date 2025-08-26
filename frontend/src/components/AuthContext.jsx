@@ -5,7 +5,6 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Remove frontend credential checking - now done via backend API
   const login = async (username, password) => {
     try {
       const response = await fetch('https://url-shortner-backend-c46p.onrender.com/api/admin/login', {

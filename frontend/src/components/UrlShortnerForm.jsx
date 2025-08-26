@@ -4,7 +4,7 @@ const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export default function UrlShortnerForm() {
   const [longUrl, setLongUrl] = useState("");
-  const [shortUrl, setShortUrl] = useState("");  // Holds full URL returned by backend
+  const [shortUrl, setShortUrl] = useState("");  
   const [error, setError] = useState("");
   const [copied, setCopied] = useState(false);
 
@@ -30,7 +30,7 @@ export default function UrlShortnerForm() {
       const data = await res.json();
 
       if (res.ok) {
-        setShortUrl(data.shortUrl);  // Use full shortened URL here
+        setShortUrl(data.shortUrl);
       } else {
         setError(data.error || "Something went wrong");
       }
@@ -66,7 +66,6 @@ export default function UrlShortnerForm() {
           </button>
         </form>
 
-        {/* Show shortened URL or error after submission */}
         {(shortUrl || error) && (
           <div className="mt-12 text-center">
             {error ? (

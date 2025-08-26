@@ -76,8 +76,6 @@ exports.redirectUrl = async (req, res) => {
 };
 
 
-// backend/controllers/urlController.js
-
 exports.getAllUrls = async (req, res) => {
   try {
     // Find all URL documents, sorted by newest first

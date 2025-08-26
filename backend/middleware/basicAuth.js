@@ -1,4 +1,3 @@
-// backend/middleware/basicAuth.js
 module.exports = function basicAuth(req, res, next) {
   // Get the Authorization header
   const auth = req.headers.authorization;
@@ -19,7 +18,7 @@ module.exports = function basicAuth(req, res, next) {
   const adminPass = process.env.ADMIN_PASSWORD;
 
   if (username === adminUser && password === adminPass) {
-    next(); // Auth success, proceed to real handler
+    next(); 
   } else {
     res.setHeader('WWW-Authenticate', 'Basic');
     res.status(401).send('Access denied.');
