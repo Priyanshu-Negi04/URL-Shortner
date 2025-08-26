@@ -1,148 +1,203 @@
-# URL Shortener (MERN Stack)
+<p align="center">
+  <img src="./frontend/public/logo.png" width="400" alt="URL Shortener Logo" />
+</p>
 
-## Overview
+<h1 align="center">🚀 URL Shortener App (MERN Stack)</h1>
+<p align="center">Simplify Your Links 🔗</p>
 
-A simple full-stack web application built with MongoDB, Express, React, and Node.js (MERN) that allows users to shorten long URLs and redirect visitors to the original URLs. The app also includes an admin dashboard to view all shortened URLs and track click statistics.
+<p align="center">
+  <a href="https://url-shortner-web-app.netlify.app/">
+    <img src="https://img.shields.io/badge/Live-Demo-blue?style=for-the-badge" alt="Live Demo" />
+  </a>
+  <img src="https://img.shields.io/github/last-commit/Priyanshu-Negi04/URL-Shortner?color=blue&style=for-the-badge" alt="Last Commit" />
+  <img src="https://img.shields.io/github/issues/Priyanshu-Negi04/URL-Shortner?style=for-the-badge" alt="Issues" />
+</p>
 
----
-
-## Features
-
-### For Users:
-- Input a long URL and get a shortened URL.
-- Visit the shortened URL to be redirected to the original link.
-- Copy the shortened URL to clipboard easily.
-
-### For Admin:
-- Secure login authentication.
-- View a dashboard listing all shortened URLs.
-- Monitor how many times each short URL has been visited.
-- Logout functionality to end admin session.
+<p align="center">
+  <a href="https://url-shortner-web-app.netlify.app/"><b>Visit Live Demo 🚀</b></a>
+</p>
 
 ---
 
-## Technologies Used
+## 📑 Table of Contents
 
-- Frontend: React, React Router, Tailwind CSS
-- Backend: Node.js, Express, MongoDB, Mongoose
-- Hosting: Netlify (Frontend), Render (Backend)
-- Environment variables for secure credential and API management
+- [Project Description](#project-description)
+- [Tech Stack](#️-tech-stack)
+- [Folder Structure](#-folder-structure)
+- [Features](#-features)
+- [Getting Started](#-getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Setup Environment Variables](#setup-environment-variables)
+  - [Running in Development](#running-in-development)
+- [Deployment](#-deployment)
+- [Sneak Peek](#-sneak-peek)
+- [Future Enhancements](#-future-enhancements)
+- [Feedback](#-feedback)
+- [Connect with Me](#-connect-with-me)
 
 ---
 
-## Installation and Setup
+## 📖 Project Description
+
+**URL Shortener App** is a full-stack web application built with the MERN stack (MongoDB, Express, React, Node.js). It allows users to easily shorten long URLs, making them easier to share and manage. The app features a simple user interface for generating short links, an admin dashboard for managing URLs and viewing statistics, and secure authentication for admin access. The project is designed to be fast, responsive, and easy to deploy.
+
+---
+
+## 🛠️ Tech Stack
+
+<p>
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
+  <img src="https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express" />
+  <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=FFD62E" alt="Vite" />
+</p>
+
+- **Hosting:** Netlify (Frontend), Render (Backend)
+- Secure environment configurations using `.env` variables
+
+---
+
+## 📁 Folder Structure
+
+```
+URL-Shortner/
+├── backend/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── .env
+│   └── server.js
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   └── App.jsx
+│   ├── public/
+│   └── .env
+├── README.md
+└── screenshots/
+```
+
+---
+
+## ✨ Features
+
+| Feature                       | Benefit                                                   |
+|-------------------------------|-----------------------------------------------------------|
+| 🔥 URL Shortening             | Fast generation of short, shareable URLs                  |
+| 🎯 Simple User Interface      | Easy input of long URLs and instant short URL display     |
+| 📊 Admin Dashboard            | View all shortened URLs with click stats and timestamps   |
+| 🔐 Secure Admin Authentication| Protected admin routes with secure login and logout       |
+| 📋 Copy to Clipboard          | One-click copy of shortened URLs                          |
+| 🌎 Responsive Design          | Mobile and desktop friendly                               |
+
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js and npm installed
-- MongoDB Atlas or local MongoDB instance
+- [Node.js](https://nodejs.org/) and npm installed
+- MongoDB instance (Atlas or local)
 
-### Backend Setup
+---
 
-1. Navigate to backend folder:
+### Installation
 
-cd backend
-
-2. Install dependencies:
-
+```bash
+git clone https://github.com/priyanshu-negi/URL-Shortner.git
+cd URL-Shortner/backend
 npm install
+cd ../frontend
+npm install
+```
 
-3. Create a `.env` file and add the following variables:
+---
 
+### Setup Environment Variables
+
+Create `.env` files in `/backend` and `/frontend` with the following variables:
+
+#### Backend `.env`
+
+```
 MONGO_URI=your_mongo_connection_string
 ADMIN_USERNAME=your_admin_username
 ADMIN_PASSWORD=your_admin_password
 BASE_URL=http://localhost:5000
+```
 
-4. Start the backend server:
+#### Frontend `.env`
 
-npm run dev
-
-
-
-
-### Frontend Setup
-
-1. Navigate to frontend folder:
-
-cd frontend
-
-2. Install dependencies:
-   
-npm install
-
-3. Create a `.env` file and add the following:
-   
+```
 VITE_BACKEND_URL=http://localhost:5000/api/shorten
 VITE_ADMIN_API_URL=http://localhost:5000/api/admin/urls
+```
 
-4. Start the frontend dev server:
-   
+---
+
+### Running in Development
+
+Start backend server:
+
+```bash
+cd backend
 npm run dev
+```
 
+Start frontend server:
 
----
+```bash
+cd frontend
+npm run dev
+```
 
-## Deployment
-
-- The backend is deployed on Render: [https://url-shortner-backend-c46p.onrender.com](https://url-shortner-backend-c46p.onrender.com)
-- The frontend is deployed on Netlify: [https://url-shortner-web-app.netlify.app](https://url-shortner-web-app.netlify.app)
-
----
-
-## Usage
-
-- Visit the homepage, enter a long URL, and click “Shorten” to generate a short URL.
-- Share or visit the short URL to redirect to the original link.
-- Admin users can log in at `/admin` to view URL statistics and manage shortened URLs.
+Open [http://localhost:3000](http://localhost:3000) to use the app.
 
 ---
 
-## Screenshots (optional)
+## 🌐 Deployment
 
-![Home Page](screenshots/home.png)  
-*Main page to enter the long URL and get a short URL*
-
-![Admin Login](screenshots/admin-login.png)  
-*Admin login page for secure access*
-
-![Admin Dashboard](screenshots/admin-dashboard.png)  
-*Admin page showing URL stats and details*
+- **Backend:** [Render](https://url-shortner-backend-c46p.onrender.com)
+- **Frontend:** [Netlify](https://url-shortner-web-app.netlify.app)
 
 ---
 
-## Project Structure
+## 👀 Sneak Peek
 
-/backend
-/controllers
-/middleware
-/models
-/routes
-server.js
-/frontend
-/src
-/components
-App.jsx
-main.jsx
-index.css
-
+<p align="center">
+  <img src="screenshots/home.png" alt="Home Page Screenshot" width="600" />
+  <br/><br/>
+  <img src="screenshots/admin-login.png" alt="Admin Login Screenshot" width="600" />
+  <br/><br/>
+  <img src="screenshots/admin-dashboard.png" alt="Admin Dashboard Screenshot" width="600" />
+</p>
 
 ---
 
-## Contributing
+## 🔮 Future Enhancements
 
-Contributions and improvements are welcome! Please create a pull request or open an issue.
-
----
-
-## License
-
-This project is licensed under the MIT License.
+- 🔐 Add JWT token-based authentication
+- 📈 Add analytics with charts and graphs
+- 🌍 Support custom short domains
+- 🚀 Add user registration and personalized URL management
 
 ---
 
-## Acknowledgments
+## 💬 Feedback
 
-Thanks to Sobhan for the assignment prompt and guidance.
+I’d love to hear your thoughts and suggestions!  
+Contact me at: [itspriyanshunegi@gmail.com](mailto:itspriyanshunegi@gmail.com)
 
+---
 
+## 📬 Connect with Me
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/priyanshu-negi/)
+
+---
+
+<p align="center"><i>Thank you for checking out my URL Shortener project!</i></p>
