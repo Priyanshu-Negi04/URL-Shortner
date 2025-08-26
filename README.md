@@ -85,7 +85,7 @@
 ### Installation
 
 ```bash
-git clone https://github.com/priyanshu-negi/URL-Shortner.git
+git clone https://github.com/Priyanshu-Negi04/URL-Shortner.git
 cd URL-Shortner/backend
 npm install
 cd ../frontend
