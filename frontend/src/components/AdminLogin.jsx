@@ -6,12 +6,21 @@ const AdminLogin = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!login(username, password)) {
-      setError('Invalid username or password');
+    setError('');
+    setLoading(true);
+    
+    const result = await login(username, password);
+    
+    if (!result.success) {
+      setError(result.message || 'Login failed');
     }
+    // If successful, ProtectedRoute will automatically show AdminPage
+    
+    setLoading(false);
   };
 
   return (
@@ -24,7 +33,7 @@ const AdminLogin = () => {
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className="mb-3 p-2 border border-gray-300 rounded"
+          className="mb-3 p-2 border border-gray-300 rounded w-full"
           required
         />
         <input
@@ -32,10 +41,16 @@ const AdminLogin = () => {
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="mb-4 p-2 border border-gray-300 rounded"
+          className="mb-4 p-2 border border-gray-300 rounded w-full"
           required
         />
-        <button type="submit" className="bg-blue-600 text-white py-2 rounded w-full">Login</button>
+        <button 
+          type="submit" 
+          disabled={loading}
+          className="bg-blue-600 text-white py-2 rounded w-full disabled:opacity-50"
+        >
+          {loading ? 'Logging in...' : 'Login'}
+        </button>
       </form>
     </div>
   );
