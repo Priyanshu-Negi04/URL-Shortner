@@ -23,7 +23,6 @@
 
 - [Project Description](#project-description)
 - [Tech Stack](#️-tech-stack)
-- [Folder Structure](#-folder-structure)
 - [Features](#-features)
 - [Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
@@ -60,28 +59,6 @@
 
 ---
 
-## 📁 Folder Structure
-
-```
-URL-Shortner/
-├── backend/
-│   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   ├── .env
-│   └── server.js
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   └── App.jsx
-│   ├── public/
-│   └── .env
-├── README.md
-└── screenshots/
-```
-
----
 
 ## ✨ Features
 
