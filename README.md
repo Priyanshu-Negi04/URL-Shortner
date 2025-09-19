@@ -138,8 +138,8 @@ Open [http://localhost:3000](http://localhost:3000) to use the app.
 
 ## 🌐 Deployment
 
-- **Backend:** [Render](https://url-shortner-backend-c46p.onrender.com)
-- **Frontend:** [Netlify](https://url-shortner-web-app.netlify.app)
+- **Backend:** Render
+- **Frontend:** Netlify
 
 ---
 
